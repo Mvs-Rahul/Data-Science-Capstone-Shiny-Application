@@ -85,17 +85,17 @@ if(preprocessing)
   }
   
   # Convert term document matrices into frequencies and process the N-grams
-  aFreq_2 <- tdmToFreq(aTdm_2)
-  processGram(aFreq_2)
-  aFreq_3 <- tdmToFreq(aTdm_3)
-  processGram(aFreq_3)
-  aFreq_4 <- tdmToFreq(aTdm_4)
-  processGram(aFreq_4)
+  mvs1 <- tdmToFreq(aTdm_2)
+  processGram(mvs1)
+  mvs2 <- tdmToFreq(aTdm_3)
+  processGram(mvs2)
+  mvs3 <- tdmToFreq(aTdm_4)
+  processGram(mvs3)
   
   # Save the N-gram frequencies to disk
-  save(aFreq_2, file = "aFreq_2.RData")
-  save(aFreq_3, file = "aFreq_3.RData")
-  save(aFreq_4, file = "aFreq_4.RData")
+  save(mvs1, file = "mvs1.RData")
+  save(mvs2, file = "mvs2.RData")
+  save(mvs3, file = "mvs3.RData")
 }
 
 
@@ -121,17 +121,17 @@ Papazian <- function(raw)
   if(length(sentence)>=3)
   {
     gram <- paste(tail(sentence, 3), collapse=" ")
-    myattempt4 <- aFreq_4[ which(pre==gram),]$cur[1]
+    myattempt4 <- mvs3[ which(pre==gram),]$cur[1]
     
     if(is.na(myattempt4))
     {
       gram <- paste(tail(sentence, 2), collapse=" ")
-      myattempt3 <- aFreq_3[ which(pre==gram),]$cur[1]
+      myattempt3 <- mvs2[ which(pre==gram),]$cur[1]
       
       if(is.na(myattempt3))
       {
         gram <- paste(tail(sentence, 1), collapse=" ")
-        myattempt2 <- aFreq_2[ which(pre==gram),]$cur[1]
+        myattempt2 <- mvs1[ which(pre==gram),]$cur[1]
         
         if(is.na(myattempt2))
         {
@@ -156,12 +156,12 @@ Papazian <- function(raw)
   if(length(sentence)==2)
   {
     gram <- paste(tail(sentence, 2), collapse=" ")
-    myattempt3 <- aFreq_3[ which(pre==gram),]$cur[1]
+    myattempt3 <- mvs2[ which(pre==gram),]$cur[1]
     
     if(is.na(myattempt3))
     {
       gram <- paste(tail(sentence, 1), collapse=" ")
-      myattempt2 <- aFreq_2[ which(pre==gram),]$cur[1]
+      myattempt2 <- mvs1[ which(pre==gram),]$cur[1]
       
       if(is.na(myattempt2))
       { 
@@ -181,7 +181,7 @@ Papazian <- function(raw)
   if(length(sentence)==1)
   {
     gram <- paste(tail(sentence, 1), collapse=" ")
-    myattempt2 <- aFreq_2[ which(pre==gram),]$cur[1]
+    myattempt2 <- mvs1[ which(pre==gram),]$cur[1]
     
     if(is.na(myattempt2))
     { 
