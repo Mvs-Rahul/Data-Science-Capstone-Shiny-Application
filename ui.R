@@ -1,9 +1,4 @@
-#
-# ui.R
-#
-# Capstone App created using Shiny and R Studio 
-#
-# by Mvs Rahul
+# Mvs Rahul
 # 
 # November 15, 2022
 #
