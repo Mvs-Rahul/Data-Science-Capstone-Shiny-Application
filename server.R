@@ -1,9 +1,3 @@
-#
-# server.R
-#
-# Capstone App created using Shiny and R Studio 
-#
-# 
 # Mvs Rahul
 # 
 # 15th November,2022
